@@ -2,6 +2,12 @@
 
 <br>
 
+### 1.0.7
+
+- match default views positioning
+
+<br>
+
 ### 1.0.6
 
 - made the UI feel more like the default editor UI elements,
