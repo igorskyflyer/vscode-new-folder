@@ -28,7 +28,9 @@ Expand the Explorer view in the Sidebar and click on the "New Folder..." button,
 
 <br>
 
-![Explorer View](https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/explorer-view.png)
+<p align="center">
+	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/explorer-view.png" alt="Explorer View">
+</p>
 
 <br>
 
@@ -38,7 +40,9 @@ Hit **F1** to bring up the Command Palette, type "New Folder", select the comman
 
 <br>
 
-![Command Palette](https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette.png)
+<p align="center">
+	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette-create.png" alt="Command Palette New Folder">
+</p>
 
 <br>
 
@@ -60,11 +64,21 @@ I would recommend using the Simple File Dialogs when using this extension, since
 
 <br>
 
+To access the extension's config you can either go to Settings manually or open up the Command Palette and search for New Folder Config.
+
+<br>
+
+<p align="center">
+	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette-config.png" alt="Command Palette Config">
+</p>
+
+<br>
+
 The extension exposes 2 properties for you to change,
 
 <br>
 
-` new-folder.autoOpen`
+` newFolder.autoOpen`
 
 Whether the newly created folder should be opened automatically upon creation.
 
@@ -77,7 +91,7 @@ Whether the newly created folder should be opened automatically upon creation.
 
 <br>
 
-`new-folder.projectRoot`
+`newFolder.projectRoot`
 
 Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command. If the path is an empty string (default) or a non-existing path, the root folder will be set to your User/Home folder.
 
