@@ -10,7 +10,7 @@
 
 <br>
 
-`Visual Studio Code` by default doesn't support a New Folder function available when there are no open folders in the editor, not in the Explorer view nor in the Command Palette and the aim of this extension is to provide that exactly. With `New Folder` you can create new (local) folders without the need to leave Visual Studio Code.
+`Visual Studio Code` by default doesn't support a New Folder function when there are no open folders in the editor, not in the Explorer view nor in the Command Palette and the aim of this extension is to provide that exactly. With `New Folder` you can create new (local) folders without the need to leave Visual Studio Code.
 
 <br>
 
