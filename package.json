@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -62,7 +62,7 @@
 		"viewsWelcome": [
 			{
 				"view": "explorer",
-				"contents": "[Create Folder](command:newFolder.new)\nYou can create a new local folder.",
+				"contents": "You can create a new folder.\n[Create Folder](command:newFolder.new)",
 				"when": "workbenchState == empty"
 			}
 		],
