@@ -1,16 +1,16 @@
-## 📂 New Folder 🤟
+## New Folder 📂🤟
 
 <br>
 
 <p align="center">
-<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" width="128" height="128">
+	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" >
 </p>
 
 > 📂 Provides a "New Folder" view in the Explorer and a command in the Command Palette. 🤟
 
 <br>
 
-`Visual Studio Code` doesn't natively support a New Folder command, not in the Explorer view nor in the Command Palette and the aim of this extension is to provide that exactly.
+`Visual Studio Code` by default doesn't support a New Folder function available when there are no open folders in the editor, not in the Explorer view nor in the Command Palette and the aim of this extension is to provide that exactly. With `New Folder` you can create new (local) folders without the need to leave Visual Studio Code.
 
 <br>
 
@@ -28,9 +28,17 @@ Expand the Explorer view in the Sidebar and click on the "New Folder..." button,
 
 <br>
 
+![Explorer View](https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/explorer-view.png)
+
+<br>
+
 > Command Palette
 
 Hit **F1** to bring up the Command Palette, type "New Folder", select the command and pick your desired parent folder and enter the name of the new folder.
+
+<br>
+
+![Command Palette](https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette.png)
 
 <br>
 
@@ -72,6 +80,8 @@ Whether the newly created folder should be opened automatically upon creation.
 `new-folder.projectRoot`
 
 Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command. If the path is an empty string (default) or a non-existing path, the root folder will be set to your User/Home folder.
+
+> ❗ On Windows you can use either forward or back slashes in the path, thanks to **[uPath](https://www.npmjs.com/package/@igor.dvlpr/upath)**.
 
 ```js
 {
