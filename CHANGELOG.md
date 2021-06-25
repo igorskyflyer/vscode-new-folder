@@ -2,6 +2,17 @@
 
 <br>
 
+### 1.0.6
+
+- made the UI feel more like the default editor UI elements,
+- show/hide commands conditionally,
+- added a new command `Config`,
+- updated configuration
+
+- clean up resources
+
+<br>
+
 ### 1.0.5
 
 - clean up resources
