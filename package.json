@@ -1,0 +1,85 @@
+{
+	"name": "new-folder",
+	"displayName": "New Folder",
+	"publisher": "igordvlpr",
+	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"galleryBanner": {
+		"color": "#0E195A",
+		"theme": "dark"
+	},
+	"icon": "assets/icon.png",
+	"categories": [
+		"Other"
+	],
+	"extensionKind": [
+		"ui"
+	],
+	"activationEvents": [
+		"onCommand:new-folder.new"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "new-folder.new",
+				"title": "New Folder..."
+			}
+		],
+		"keybindings": [
+			{
+				"command": "new-folder.new",
+				"key": "Ctrl+Alt+N",
+				"mac": "Cmd+Alt+N"
+			}
+		],
+		"viewsWelcome": [
+			{
+				"view": "explorer",
+				"contents": "[New Folder...](command:new-folder.new)\nYou can create a new local folder.",
+				"when": "workbenchState == empty"
+			}
+		],
+		"configuration": [
+			{
+				"title": "New Folder",
+				"properties": {
+					"new-folder.autoOpen": {
+						"type": "boolean",
+						"default": true,
+						"description": "Automatically open the newly created folder."
+					},
+					"new-folder.projectRoot": {
+						"type": "string",
+						"default": "",
+						"description": "Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command.\n\nOn Windows you can use either forward and back slashes, thanks to uPath."
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint"
+	},
+	"devDependencies": {
+		"@types/node": "14.x",
+		"@types/vscode": "^1.57.0",
+		"eslint": "^7.27.0"
+	},
+	"dependencies": {
+		"@igor.dvlpr/upath": "^1.0.5"
+	},
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"bugs": {
+		"url": "https://github.com/igorskyflyer/vscode-new-folder/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/igorskyflyer/vscode-new-folder.git"
+	},
+	"homepage": "https://github.com/igorskyflyer/vscode-new-folder/blob/main/README.md"
+}
