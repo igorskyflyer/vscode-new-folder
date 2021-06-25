@@ -1,4 +1,10 @@
-# New Folder
+## 📂 New Folder 🤟
+
+<br>
+
+<p align="center">
+<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" width="128" height="128">
+</p>
 
 > 📂 Provides a "New Folder" view in the Explorer and a command in the Command Palette. 🤟
 
