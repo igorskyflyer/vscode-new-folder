@@ -34,6 +34,12 @@ Hit **F1** to bring up the Command Palette, type "New Folder", select the comman
 
 <br>
 
+> Keyboard shortcut
+
+Press Ctrl/Cmd+Alt+N and pick your desired parent folder and enter the name of the new folder.
+
+<br>
+
 ### ⚙ Config
 
 I would recommend using the Simple File Dialogs when using this extension, since it makes the user experience more pleasant, i.e.
