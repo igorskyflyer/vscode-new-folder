@@ -2,6 +2,12 @@
 
 <br>
 
+### 1.0.5
+
+- clean up resources
+
+<br>
+
 ### 1.0.4
 
 - minor improvements
