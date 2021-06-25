@@ -7,7 +7,7 @@ const { u } = require('@igor.dvlpr/upath')
  * @returns {Promise<vscode.Uri | null>} The Uri of the folder if folder is set and exists, else **null**.
  */
 async function getProjectRoot() {
-  let projectRoot = u(
+  const projectRoot = u(
     vscode.workspace.getConfiguration('new-folder').get('projectRoot')
   )
 
@@ -51,13 +51,15 @@ function activate(context) {
         title: 'Create Folder',
       }
 
-      const projectRoot = await getProjectRoot()
+      try {
+        const projectRoot = await getProjectRoot()
 
-      if (projectRoot != null) {
-        options['defaultUri'] = projectRoot
-      }
+        if (projectRoot != null) {
+          options['defaultUri'] = projectRoot
+        }
 
-      vscode.window.showSaveDialog(options).then(async (folder) => {
+        const folder = await vscode.window.showSaveDialog(options)
+
         if (folder) {
           const newFolder = folder.fsPath
 
@@ -74,6 +76,7 @@ function activate(context) {
             vscode.window.showInformationMessage(
               `Folder "${newFolder}" created successfully.`
             )
+
             if (getAutoOpen()) {
               vscode.commands.executeCommand('vscode.openFolder', folder)
             }
@@ -83,7 +86,9 @@ function activate(context) {
             )
           }
         }
-      })
+      } catch (e) {
+        vscode.window.showErrorMessage(`An error has occurred.`)
+      }
     }
   )
 
