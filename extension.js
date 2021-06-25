@@ -8,7 +8,7 @@ const { u } = require('@igor.dvlpr/upath')
  */
 async function getProjectRoot() {
   const projectRoot = u(
-    vscode.workspace.getConfiguration('new-folder').get('projectRoot')
+    vscode.workspace.getConfiguration('newFolder').get('projectRoot')
   )
 
   if (!projectRoot) {
@@ -31,7 +31,7 @@ async function getProjectRoot() {
  * @returns {string}
  */
 function getAutoOpen() {
-  return vscode.workspace.getConfiguration('new-folder').get('autoOpen')
+  return vscode.workspace.getConfiguration('newFolder').get('autoOpen')
 }
 
 /**
@@ -39,60 +39,65 @@ function getAutoOpen() {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  let disposable = vscode.commands.registerCommand(
-    'new-folder.new',
-    async () => {
-      const options = {
-        canSelectMany: false,
-        openLabel: 'Select',
-        canSelectFiles: false,
-        canSelectFolders: true,
-        saveLabel: 'Create',
-        title: 'Create Folder',
-      }
-
-      try {
-        const projectRoot = await getProjectRoot()
-
-        if (projectRoot != null) {
-          options['defaultUri'] = projectRoot
-        }
-
-        const folder = await vscode.window.showSaveDialog(options)
-
-        if (folder) {
-          const newFolder = folder.fsPath
-
-          try {
-            await stat(newFolder)
-            vscode.window.showInformationMessage(
-              `Folder "${newFolder}" already exists.`
-            )
-            return
-          } catch (e) {}
-
-          try {
-            await mkdir(newFolder)
-            vscode.window.showInformationMessage(
-              `Folder "${newFolder}" created successfully.`
-            )
-
-            if (getAutoOpen()) {
-              vscode.commands.executeCommand('vscode.openFolder', folder)
-            }
-          } catch (e) {
-            vscode.window.showErrorMessage(
-              `Folder "${newFolder}" couldn't be created.`
-            )
-          }
-        }
-      } catch (e) {
-        vscode.window.showErrorMessage(`An error has occurred.`)
-      }
+  let cmdNew = vscode.commands.registerCommand('newFolder.new', async () => {
+    const options = {
+      canSelectMany: false,
+      openLabel: 'Select',
+      canSelectFiles: false,
+      canSelectFolders: true,
+      saveLabel: 'Create',
+      title: 'Create Folder',
     }
-  )
 
-  context.subscriptions.push(disposable)
+    try {
+      const projectRoot = await getProjectRoot()
+
+      if (projectRoot != null) {
+        options['defaultUri'] = projectRoot
+      }
+
+      const folder = await vscode.window.showSaveDialog(options)
+
+      if (folder) {
+        const newFolder = folder.fsPath
+
+        try {
+          await stat(newFolder)
+          vscode.window.showInformationMessage(
+            `Folder "${newFolder}" already exists.`
+          )
+          return
+        } catch (e) {}
+
+        try {
+          await mkdir(newFolder)
+          vscode.window.showInformationMessage(
+            `Folder "${newFolder}" created successfully.`
+          )
+
+          if (getAutoOpen()) {
+            vscode.commands.executeCommand('vscode.openFolder', folder)
+          }
+        } catch (e) {
+          vscode.window.showErrorMessage(
+            `Folder "${newFolder}" couldn't be created.`
+          )
+        }
+      }
+    } catch (e) {
+      vscode.window.showErrorMessage(`An error has occurred.`)
+    }
+  })
+
+  let cmdConfig = vscode.commands.registerCommand('newFolder.config', () => {
+    vscode.commands.executeCommand(
+      'workbench.action.openSettings',
+      '@ext:igordvlpr.new-folder'
+    )
+  })
+
+  context.subscriptions.push(cmdNew)
+  context.subscriptions.push(cmdConfig)
 }
 
 function deactivate() {
