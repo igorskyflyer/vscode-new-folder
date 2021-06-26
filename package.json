@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -89,7 +89,7 @@
 		"@types/vscode": "^1.57.0"
 	},
 	"dependencies": {
-		"@igor.dvlpr/upath": "^1.0.5"
+		"@igor.dvlpr/upath": "^1.1.0"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
