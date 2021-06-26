@@ -41,10 +41,6 @@ function getAutoOpen() {
 function activate(context) {
   let cmdNew = vscode.commands.registerCommand('newFolder.new', async () => {
     const options = {
-      canSelectMany: false,
-      openLabel: 'Select',
-      canSelectFiles: false,
-      canSelectFolders: true,
       saveLabel: 'Create',
       title: 'Create Folder',
     }
@@ -67,7 +63,10 @@ function activate(context) {
             `Folder "${newFolder}" already exists.`
           )
           return
-        } catch (e) {}
+        } catch (e) {
+          // folder doesn't exist,
+          // that's what we need, continue
+        }
 
         try {
           await mkdir(newFolder)
