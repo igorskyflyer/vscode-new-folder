@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -33,8 +33,7 @@
 			{
 				"command": "newFolder.new",
 				"title": "Create...",
-				"category": "New Folder",
-				"enablement": "workbenchState == empty"
+				"category": "New Folder"
 			},
 			{
 				"command": "newFolder.config",
@@ -46,8 +45,7 @@
 			"commandPalette": [
 				{
 					"command": "newFolder.new",
-					"title": "Create...",
-					"enablement": "workbenchState == empty"
+					"title": "Create..."
 				}
 			]
 		},
@@ -55,8 +53,7 @@
 			{
 				"command": "newFolder.new",
 				"key": "Ctrl+Alt+N",
-				"mac": "Cmd+Alt+N",
-				"when": "workbenchState == empty"
+				"mac": "Cmd+Alt+N"
 			}
 		],
 		"viewsWelcome": [
