@@ -20,7 +20,7 @@ async function getProjectRoot() {
       return vscode.Uri.file(projectRoot)
     }
   } catch (e) {
-    console.log(e)
+    return null
   }
 
   return null
