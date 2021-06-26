@@ -2,6 +2,12 @@
 
 <br>
 
+### 1.0.8
+
+- update uPath
+
+<br>
+
 ### 1.0.7
 
 - match default views positioning
