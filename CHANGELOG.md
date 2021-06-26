@@ -2,6 +2,12 @@
 
 <br>
 
+### 1.0.9
+
+- made the command "New Folder: Create..." always available in the Command Palette
+
+<br>
+
 ### 1.0.8
 
 - update uPath
