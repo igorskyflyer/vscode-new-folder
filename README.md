@@ -1,5 +1,8 @@
 ## 📂 New Folder 🤟
 
+![Installs](https://vsmarketplacebadge.apphb.com/installs/igordvlpr.new-folder.svg?style=flat&color=2d97e3)
+![Rating](https://vsmarketplacebadge.apphb.com/rating/igordvlpr.new-folder.svg?style=flat&color=2d97e3)
+
 <br>
 
 <p align="center">
