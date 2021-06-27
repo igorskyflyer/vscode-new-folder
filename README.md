@@ -63,7 +63,8 @@ I would recommend using the Simple File Dialogs when using this extension, since
 "files.simpleDialog.enable": true
 ```
 
-> // looking for ways to overcome this 😕
+> // looking for ways to overcome this 😕  
+> I posted an issue on Github for this, see [#127201](https://github.com/microsoft/vscode/issues/127201).
 
 <br>
 
