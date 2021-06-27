@@ -1,13 +1,17 @@
 ## 📂 New Folder 🤟
 
-![Installs](https://vsmarketplacebadge.apphb.com/installs/igordvlpr.new-folder.svg?style=flat&color=2d97e3)
-![Rating](https://vsmarketplacebadge.apphb.com/rating/igordvlpr.new-folder.svg?style=flat&color=2d97e3)
-
 <br>
 
 <p align="center">
 	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" >
 </p>
+
+<p align="center">
+  <img src="https://vsmarketplacebadge.apphb.com/installs/igordvlpr.new-folder.svg?style=flat&color=2d97e3" alt="Installs">
+  <img src="https://vsmarketplacebadge.apphb.com/rating/igordvlpr.new-folder.svg?style=flat&color=2d97e3" alt="Rating">
+</p>
+
+<br>
 
 > 📂 Provides a "New Folder" view in the Explorer and a command in the Command Palette. 🤟
 
