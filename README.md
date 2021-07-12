@@ -21,7 +21,9 @@
 
 <br>
 
-> 🚨 NOTE: currently, creating nested folders is not supported.
+> 🎉 NOTE: since `v.2.0.0` creating nested/recursive folders is supported! 🥳
+
+> Made possible with **[FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker)**. 😄
 
 <br>
 
@@ -61,14 +63,7 @@ Press Ctrl/Cmd+Alt+N and pick your desired parent folder and enter the name of t
 
 ### ⚙ Config
 
-I would recommend using the Simple File Dialogs when using this extension, since it makes the user experience more pleasant, i.e.
-
-```js
-"files.simpleDialog.enable": true
-```
-
-> // looking for ways to overcome this 😕  
-> I posted an issue on Github for this, see [#127201](https://github.com/microsoft/vscode/issues/127201).
+Setting `files.simpleDialog.enable` to `true` is **NOT** necessary since `v.2.0.0`, that setting does not affect this extension.
 
 <br>
 
