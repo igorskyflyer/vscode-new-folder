@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "1.0.9",
+	"version": "2.0.0",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -18,12 +18,14 @@
 	"keywords": [
 		"folder",
 		"explorer",
-		"igordvlpr"
+		"igordvlpr",
+		"newfolder"
 	],
 	"extensionKind": [
 		"ui"
 	],
 	"activationEvents": [
+		"onStartupFinished",
 		"onCommand:newFolder.new",
 		"onCommand:newFolder.config"
 	],
@@ -59,7 +61,7 @@
 		"viewsWelcome": [
 			{
 				"view": "explorer",
-				"contents": "You can create a new folder.\n[Create Folder](command:newFolder.new)",
+				"contents": "You can create a new folder.\n[Create Folder](command:newFolder.new)\nYou can configure this extension in the [Config](command:newFolder.config).",
 				"when": "workbenchState == empty"
 			}
 		],
@@ -86,7 +88,8 @@
 		"@types/vscode": "^1.57.0"
 	},
 	"dependencies": {
-		"@igor.dvlpr/upath": "^1.1.0"
+		"@igor.dvlpr/upath": "^1.2.1",
+		"@igor.dvlpr/vscode-folderpicker": "^1.0.0"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
