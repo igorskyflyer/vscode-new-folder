@@ -2,6 +2,33 @@
 
 <br>
 
+### 2.0.0
+
+- added more interactive dialogs upon folder picking/creating,
+- added a link to Config in the Explorer view,
+- completely rewritten the extension, it now uses a custom UI provided by `FolderPicker` and available on **[Github](https://github.com/igorskyflyer/npm-vscode-folderpicker)** and **[npm](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker)** which brings new features:
+
+  - nested/recursive folder creating (fixed [#1](https://github.com/igorskyflyer/vscode-new-folder/issues/1) 🤗),
+  - custom icons for the picker,
+  - custom actions,
+  - smart folder navigation,
+  - absolute path support,
+  - many callbacks,
+  - universal paths, thanks to [uPath](https://github.com/igorskyflyer/npm-upath),
+  - fast folder traversal,
+  - error handling.
+
+  <br>
+  <br>
+
+Known issues:
+
+- no FolderPicker input value validation,
+
+- you tell me.
+
+<br>
+
 ### 1.0.9
 
 - made the command "New Folder: Create..." always available in the Command Palette
