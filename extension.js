@@ -1,37 +1,38 @@
 const vscode = require('vscode')
-const { stat, mkdir } = require('fs/promises')
 const { u } = require('@igor.dvlpr/upath')
+const { showFolderPicker } = require('@igor.dvlpr/vscode-folderpicker')
+const { statSync, mkdirSync } = require('fs')
 
 /**
  * Asynchronously get the project root folder from the Config.
- * @returns {Promise<vscode.Uri | null>} The Uri of the folder if folder is set and exists, else **null**.
+ * @returns {string} The path of the project root folder or an empty string.
  */
-async function getProjectRoot() {
+function getProjectRoot() {
   const projectRoot = u(
-    vscode.workspace.getConfiguration('newFolder').get('projectRoot')
+    vscode.workspace.getConfiguration('newFolder').get('projectRoot') || ''
   )
 
   if (!projectRoot) {
-    return null
+    return ''
   }
 
   try {
-    if ((await stat(projectRoot)).isDirectory()) {
-      return vscode.Uri.file(projectRoot)
+    if (statSync(projectRoot).isDirectory()) {
+      return projectRoot
     }
-  } catch (e) {
-    return null
+  } catch {
+    return ''
   }
 
-  return null
+  return ''
 }
 
 /**
  * Get the AutoOpen property from Config - configure whether the newly created folder should be automatically opened after it's created.
- * @returns {string}
+ * @returns {boolean}
  */
 function getAutoOpen() {
-  return vscode.workspace.getConfiguration('newFolder').get('autoOpen')
+  return vscode.workspace.getConfiguration('newFolder').get('autoOpen') || false
 }
 
 /**
@@ -39,53 +40,76 @@ function getAutoOpen() {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  let cmdNew = vscode.commands.registerCommand('newFolder.new', async () => {
-    const options = {
-      saveLabel: 'Create',
-      title: 'Create Folder',
-    }
+  let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
+    const projectRoot = getProjectRoot()
 
-    try {
-      const projectRoot = await getProjectRoot()
-
-      if (projectRoot != null) {
-        options['defaultUri'] = projectRoot
-      }
-
-      const folder = await vscode.window.showSaveDialog(options)
-
-      if (folder) {
-        const newFolder = folder.fsPath
-
+    showFolderPicker(projectRoot, {
+      dialogTitle: 'Folder Picker',
+      ignoreFocusOut: true,
+      folderIcon: '⚡',
+      upFolderIcon: '🔼',
+      onPickFolder: (folderPath) => {
         try {
-          await stat(newFolder)
-          vscode.window.showInformationMessage(
-            `Folder "${newFolder}" already exists.`
-          )
-          return
-        } catch (e) {
-          // folder doesn't exist,
-          // that's what we need, continue
+          if (getAutoOpen()) {
+            vscode.window.showInformationMessage(`Opening "${folderPath}"...`)
+
+            vscode.commands.executeCommand(
+              'vscode.openFolder',
+              vscode.Uri.file(folderPath)
+            )
+          } else {
+            vscode.window
+              .showInformationMessage(
+                'The setting Auto Open needs to be set to true in order to automatically open picked folders.',
+                ...['Open Config', 'Dismiss']
+              )
+              .then((selection) => {
+                if (selection && selection === 'Open Config') {
+                  vscode.commands.executeCommand('newFolder.config')
+                }
+              })
+          }
+        } catch {
+          vscode.window.showErrorMessage(`Couldn't open "${folderPath}".`)
         }
-
+      },
+      onNewFolder: (folderPath) => {
         try {
-          await mkdir(newFolder)
-          vscode.window.showInformationMessage(
-            `Folder "${newFolder}" created successfully.`
-          )
+          mkdirSync(folderPath, {
+            recursive: true,
+          })
 
           if (getAutoOpen()) {
-            vscode.commands.executeCommand('vscode.openFolder', folder)
+            vscode.window.showInformationMessage(
+              `Successfully created "${folderPath}", now opening...`
+            )
+
+            vscode.commands.executeCommand(
+              'vscode.openFolder',
+              vscode.Uri.file(folderPath)
+            )
+          } else {
+            vscode.window
+              .showInformationMessage(
+                `Successfully created "${folderPath}".`,
+                ...['Open Folder']
+              )
+              .then((selection) => {
+                if (selection && selection === 'Open Folder') {
+                  vscode.commands.executeCommand(
+                    'vscode.openFolder',
+                    vscode.Uri.file(folderPath)
+                  )
+                }
+              })
           }
-        } catch (e) {
+        } catch {
           vscode.window.showErrorMessage(
-            `Folder "${newFolder}" couldn't be created.`
+            `Couldn't create and open "${folderPath}".`
           )
         }
-      }
-    } catch (e) {
-      vscode.window.showErrorMessage(`An error has occurred.`)
-    }
+      },
+    })
   })
 
   let cmdConfig = vscode.commands.registerCommand('newFolder.config', () => {
