@@ -2,6 +2,12 @@
 
 <br>
 
+### 2.0.1
+
+- added demo Gifs for easier usage understanding
+
+<br>
+
 ### 2.0.0
 
 - added more interactive dialogs upon folder picking/creating,
