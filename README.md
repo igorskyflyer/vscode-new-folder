@@ -33,12 +33,13 @@ To get started, open an instance of Visual Studio Code and do any of the followi
 
 > Explorer view
 
-Expand the Explorer view in the Sidebar and click on the "New Folder..." button, pick your desired parent folder and enter the name of the new folder.
+Expand the Explorer view in the Sidebar and click on the "Create Folder..." button, pick your desired parent folder and enter the name of the new folder.
 
 <br>
 
 <p align="center">
-	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/explorer-view.png" alt="Explorer View">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/explorer-command.gif" alt="Explorer View">
+	<sub>Explorer View command</sub>
 </p>
 
 <br>
@@ -50,7 +51,16 @@ Hit **F1** to bring up the Command Palette, type "New Folder", select the comman
 <br>
 
 <p align="center">
-	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette-create.png" alt="Command Palette New Folder">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/command-palette-create.gif" alt="Command Palette New Folder">
+	<sub>Command palette command to create a folder in current directory</sub>
+</p>
+
+<br>
+<br>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/command-palette-navigate.gif" alt="Command Palette New Folder">
+	<sub>Command Palette navigate to folder and recursive directories create</sub>
 </p>
 
 <br>
