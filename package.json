@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.1.3",
+	"version": "2.1.4",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -89,12 +89,14 @@
 					"newFolder.responseSpeed": {
 						"type": "string",
 						"enum": [
+							"Instant",
 							"Fast",
 							"Normal",
 							"Lazy"
 						],
 						"enumDescriptions": [
 							"Generate Actions as you type. Might be slow on low-end machines.",
+							"Generate Actions as you type with a slight delay.",
 							"Wait a split second before generating Actions.",
 							"Wait a bit more before generating Actions."
 						],
@@ -130,7 +132,7 @@
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.0.1"
+		"@igor.dvlpr/vscode-folderpicker": "^2.0.2"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
