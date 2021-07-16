@@ -9,6 +9,15 @@ Known issues:
 
 <br>
 
+### 2.1.4
+
+- added `Instant` as an option to `ResponseSpeed` config property,
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.0.2` which includes these fixes:
+  - updated [`Zep()`](https://www.npmjs.com/package/@igor.dvlpr/zep) to `v.3.0.0` - brings more stability,
+  - added `Instant` as a value to `ResponseSpeed`.
+
+<br>
+
 ### 2.1.3
 
 - improved activation time, by up to ~20x!
