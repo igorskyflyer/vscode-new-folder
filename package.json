@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
@@ -77,7 +77,40 @@
 					"newFolder.projectRoot": {
 						"type": "string",
 						"default": "",
-						"description": "Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command.\n\nOn Windows you can use either forward or back slashes in the path, thanks to uPath."
+						"markdownDescription": "Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command.<br>On Windows you can use either forward or back slashes in the path, thanks to [uPath](https://www.npmjs.com/package/@igor.dvlpr/upath)."
+					},
+					"newFolder.responseSpeed": {
+						"type": "string",
+						"enum": [
+							"Fast",
+							"Normal",
+							"Lazy"
+						],
+						"enumDescriptions": [
+							"Generate Actions as you type. Might be slow on low-end machines.",
+							"Wait a split second before generating Actions.",
+							"Wait a bit more before generating Actions."
+						],
+						"default": "Normal",
+						"markdownDescription": "Response speed for generating Actions when typing into the InputBox of the Picker. **Change only if needed.**"
+					},
+					"newFolder.showIcons": {
+						"type": "boolean",
+						"default": true,
+						"description": "Show icons in the Picker."
+					},
+					"newFolder.iconsType": {
+						"type": "string",
+						"enum": [
+							"built-in",
+							"emoji"
+						],
+						"enumDescriptions": [
+							"Use the built-in ThemeIcons of the editor.",
+							"Use emojis."
+						],
+						"default": "built-in",
+						"description": "The type of icons to use in the Picker."
 					}
 				}
 			}
@@ -89,7 +122,7 @@
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^1.0.0"
+		"@igor.dvlpr/vscode-folderpicker": "^2.0.1"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
