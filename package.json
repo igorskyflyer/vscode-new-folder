@@ -92,7 +92,7 @@
 							"Wait a bit more before generating Actions."
 						],
 						"default": "Normal",
-						"markdownDescription": "Response speed for generating Actions when typing into the InputBox of the Picker. **Change only if needed.**"
+						"markdownDescription": "Response speed for generating Actions when typing into the InputBox of the Picker. **Change only if needed.** Functionality provided by [`Zep()`](https://www.npmjs.com/package/@igor.dvlpr/zep)."
 					},
 					"newFolder.showIcons": {
 						"type": "boolean",
