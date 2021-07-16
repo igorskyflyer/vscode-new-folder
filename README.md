@@ -87,32 +87,49 @@ To access the extension's config you can either go to Settings manually or open 
 
 <br>
 
-The extension exposes 2 properties for you to change,
+The extension exposes these properties for you to change,
 
 <br>
 
-` newFolder.autoOpen`
+```ts
+newFolder.autoOpen: boolean = true
+```
 
 Whether the newly created folder should be opened automatically upon creation.
 
-```js
- {
-	"type": "boolean",
-	"default": true
-},
-```
-
 <br>
 
-`newFolder.projectRoot`
+```ts
+newFolder.projectRoot: string = ''
+```
 
 Root directory path where you keep your projects. This is the path to use as the initial folder for the New Folder command. If the path is an empty string (default) or a non-existing path, the root folder will be set to your User/Home folder.
 
 > ❗ On Windows you can use either forward or back slashes in the path, thanks to **[uPath](https://www.npmjs.com/package/@igor.dvlpr/upath)**.
 
-```js
-{
-	"type": "string",
-	"default": ""
-}
+<br>
+
+```ts
+newFolder.responseSpeed: ResponseSpeed = ResponseSpeed.Normal
 ```
+
+Response speed for generating Actions when typing into the InputBox of the Picker. **Change only if needed.**
+Functionality provided by [`Zep()`](https://www.npmjs.com/package/@igor.dvlpr/zep).
+
+<br>
+
+```ts
+newFolder.showIcons: boolean = true
+```
+
+Whether to show icons in the Picker.
+
+<br>
+
+```ts
+newFolder.iconsType: string = 'built-in'
+```
+
+The type of icons to use in the Picker.
+
+<br>
