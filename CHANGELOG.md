@@ -1,5 +1,22 @@
 # New Folder
 
+<br>
+
+Known issues:
+
+- no folder name validation,
+- you tell me [here](https://github.com/igorskyflyer/vscode-new-folder/issues).
+
+<br>
+
+### 2.1.3
+
+- improved activation time, by up to ~20x!
+- improved overall performance,
+- added extension name to the `Config` link in the Explorer for clarity.
+
+<br>
+
 ### 2.1.x
 
 - added 3 new options:
@@ -40,15 +57,6 @@
   - error handling.
 
   <br>
-  <br>
-
-Known issues:
-
-- no FolderPicker input value validation,
-
-- you tell me.
-
-<br>
 
 ### 1.0.9
 
