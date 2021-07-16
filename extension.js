@@ -1,10 +1,78 @@
 const vscode = require('vscode')
 const { u } = require('@igor.dvlpr/upath')
-const { showFolderPicker } = require('@igor.dvlpr/vscode-folderpicker')
+const {
+  showFolderPicker,
+  ResponseSpeed,
+} = require('@igor.dvlpr/vscode-folderpicker')
 const { statSync, mkdirSync } = require('fs')
 
 /**
- * Asynchronously get the project root folder from the Config.
+ * @typedef Icons
+ * @property {IconObject} builtIn
+ * @property {IconObject} emoji
+ */
+
+/**
+ * @typedef IconObject
+ * @property {string} iconFolder
+ * @property {string}    iconFolderUp
+ * @property {string} iconCreate
+ * @property {string} iconNavigate
+ * @property {string} iconPick
+ */
+
+/**
+ * @enum {string}
+ */
+const IconsType = {
+  BuiltIn: 'builtIn',
+  Emoji: 'emoji',
+}
+
+/**
+ * @type {Icons}
+ */
+const Icons = {
+  /**
+   * @type {IconObject}
+   */
+  builtIn: {
+    iconFolder: '$(folder)',
+    iconFolderUp: '$(folder-opened)',
+    iconCreate: '$(new-folder)',
+    iconNavigate: '$(chevron-right)',
+    iconPick: '$(check)',
+  },
+  /**
+   * @type {IconObject}
+   */
+  emoji: {
+    iconFolder: '📁',
+    iconFolderUp: '🔼',
+    iconCreate: '➕',
+    iconNavigate: '▶',
+    iconPick: '🤏',
+  },
+}
+
+/**
+ * Gets the Icons for the Picker based on the configured Icon type.
+ * @returns {IconObject}
+ */
+function getIcons() {
+  let iconsType = vscode.workspace
+    .getConfiguration('newFolder')
+    .get('iconsType')
+
+  if (iconsType && iconsType === IconsType.Emoji) {
+    return Icons.emoji
+  } else {
+    return Icons.builtIn
+  }
+}
+
+/**
+ * Gets the project root folder from the Config.
  * @returns {string} The path of the project root folder or an empty string.
  */
 function getProjectRoot() {
@@ -28,11 +96,52 @@ function getProjectRoot() {
 }
 
 /**
- * Get the AutoOpen property from Config - configure whether the newly created folder should be automatically opened after it's created.
+ * Gets the AutoOpen property from Config - configures whether the newly created folder should be automatically opened after it's created.
  * @returns {boolean}
  */
 function getAutoOpen() {
   return vscode.workspace.getConfiguration('newFolder').get('autoOpen') || false
+}
+
+/**
+ * Gets the ShowIcons property from Config - configures whether to show icons in the Picker.
+ * @returns {boolean}
+ */
+function getShowIcons() {
+  const showIcons = vscode.workspace
+    .getConfiguration('newFolder')
+    .get('showIcons')
+
+  return showIcons == false ? false : true
+}
+
+/**
+ * Gets the responseSpeed property from Config - configures the responsiveness of the InputBox of the QuickPick.
+ * @returns {number}
+ */
+function getResponseSpeed() {
+  const responseSpeed = vscode.workspace
+    .getConfiguration('newFolder')
+    .get('responseSpeed')
+
+  if (responseSpeed === 'Lazy') {
+    return ResponseSpeed.Lazy
+  } else if (responseSpeed === 'Fast') {
+    return ResponseSpeed.Fast
+  } else {
+    return ResponseSpeed.Normal
+  }
+}
+
+/**
+ * Opens the Configuration screen for this extension.
+ * @returns {void}
+ */
+function openConfig() {
+  vscode.commands.executeCommand(
+    'workbench.action.openSettings',
+    '@ext:igordvlpr.new-folder'
+  )
 }
 
 /**
@@ -42,12 +151,19 @@ function getAutoOpen() {
 function activate(context) {
   let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
     const projectRoot = getProjectRoot()
+    const Icons = getIcons()
 
     showFolderPicker(projectRoot, {
       dialogTitle: 'Folder Picker',
       ignoreFocusOut: true,
-      folderIcon: '⚡',
-      upFolderIcon: '🔼',
+      showIcons: getShowIcons(),
+      iconFolder: Icons.iconFolder,
+      iconFolderUp: Icons.iconFolderUp,
+      iconCreate: Icons.iconCreate,
+      iconNavigate: Icons.iconNavigate,
+      iconPick: Icons.iconPick,
+      responseSpeed: getResponseSpeed(),
+      onConfigButton: openConfig,
       onPickFolder: (folderPath) => {
         try {
           if (getAutoOpen()) {
@@ -73,7 +189,7 @@ function activate(context) {
           vscode.window.showErrorMessage(`Couldn't open "${folderPath}".`)
         }
       },
-      onNewFolder: (folderPath) => {
+      onCreateFolder: (folderPath) => {
         try {
           mkdirSync(folderPath, {
             recursive: true,
@@ -112,12 +228,10 @@ function activate(context) {
     })
   })
 
-  let cmdConfig = vscode.commands.registerCommand('newFolder.config', () => {
-    vscode.commands.executeCommand(
-      'workbench.action.openSettings',
-      '@ext:igordvlpr.new-folder'
-    )
-  })
+  let cmdConfig = vscode.commands.registerCommand(
+    'newFolder.config',
+    openConfig
+  )
 
   context.subscriptions.push(cmdNew)
   context.subscriptions.push(cmdConfig)
