@@ -3,16 +3,16 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
 	"scripts": {
-		"build": ".\\node_modules\\.bin\\esbuild .\\src\\extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --minify",
-		"dev": ".\\node_modules\\.bin\\esbuild .\\src\\extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --sourcemap",
-		"watch": "npm run -S dev -- --watch",
-		"try": "npm run build && vsce package",
-		"party": "npm run build && vsce publish"
+		"vscode:prepublish": "npm run make",
+		"make": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14 --minify",
+		"dev": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14 --sourcemap --watch",
+		"pkg": "vsce package",
+		"pub": "vsce publish"
 	},
 	"galleryBanner": {
 		"color": "#050822",
