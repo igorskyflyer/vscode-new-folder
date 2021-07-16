@@ -128,6 +128,8 @@ function getResponseSpeed() {
     return ResponseSpeed.Lazy
   } else if (responseSpeed === 'Fast') {
     return ResponseSpeed.Fast
+  } else if (responseSpeed === 'Instant') {
+    return ResponseSpeed.Instant
   } else {
     return ResponseSpeed.Normal
   }
@@ -151,18 +153,19 @@ function openConfig() {
 function activate(context) {
   let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
     const projectRoot = getProjectRoot()
-    const Icons = getIcons()
+    const icons = getIcons()
+    const responseSpeed = getResponseSpeed()
 
     showFolderPicker(projectRoot, {
       dialogTitle: 'Folder Picker',
       ignoreFocusOut: true,
       showIcons: getShowIcons(),
-      iconFolder: Icons.iconFolder,
-      iconFolderUp: Icons.iconFolderUp,
-      iconCreate: Icons.iconCreate,
-      iconNavigate: Icons.iconNavigate,
-      iconPick: Icons.iconPick,
-      responseSpeed: getResponseSpeed(),
+      iconFolder: icons.iconFolder,
+      iconFolderUp: icons.iconFolderUp,
+      iconCreate: icons.iconCreate,
+      iconNavigate: icons.iconNavigate,
+      iconPick: icons.iconPick,
+      responseSpeed: responseSpeed,
       onConfigButton: openConfig,
       onPickFolder: (folderPath) => {
         try {
