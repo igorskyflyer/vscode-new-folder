@@ -1,14 +1,6 @@
 # New Folder
 
-<br>
-
-### 2.1.1
-
-- added missing options to README
-
-<br>
-
-### 2.1.0
+### 2.1.x
 
 - added 3 new options:
   - `responseSpeed` - response speed for generating Actions when typing into the InputBox of the Picker,
@@ -31,7 +23,7 @@
 
 <br>
 
-### 2.0.0
+## 2.0.0
 
 - added more interactive dialogs upon folder picking/creating,
 - added a link to Config in the Explorer view,
@@ -115,6 +107,6 @@ Known issues:
 
 <br>
 
-### 1.0.0
+## 1.0.0
 
 > 🤟 Initial release 🎉

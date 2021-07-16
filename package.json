@@ -3,12 +3,12 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
 	"galleryBanner": {
-		"color": "#EC9425",
+		"color": "#050822",
 		"theme": "dark"
 	},
 	"icon": "assets/icon.png",
