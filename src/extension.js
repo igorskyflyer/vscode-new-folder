@@ -32,7 +32,7 @@ const IconsType = {
 /**
  * @type {Icons}
  */
-const Icons = {
+const SupportedIcons = {
   /**
    * @type {IconObject}
    */
@@ -65,9 +65,9 @@ function getIcons() {
     .get('iconsType')
 
   if (iconsType && iconsType === IconsType.Emoji) {
-    return Icons.emoji
+    return SupportedIcons.emoji
   } else {
-    return Icons.builtIn
+    return SupportedIcons.builtIn
   }
 }
 
