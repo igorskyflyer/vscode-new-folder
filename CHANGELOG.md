@@ -2,6 +2,12 @@
 
 <br>
 
+### 2.1.1
+
+- added missing options to README
+
+<br>
+
 ### 2.1.0
 
 - added 3 new options:
