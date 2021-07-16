@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" >
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/assets/icon.png" alt="New Folder - Visual Studio Code extension" >
 </p>
 
 <p align="center">
@@ -82,7 +82,7 @@ To access the extension's config you can either go to Settings manually or open 
 <br>
 
 <p align="center">
-	<img src="https://github.com/igorskyflyer/vscode-new-folder/raw/main/screenshots/command-palette-config.png" alt="Command Palette Config">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/command-palette-config.png" alt="Command Palette Config">
 </p>
 
 <br>
