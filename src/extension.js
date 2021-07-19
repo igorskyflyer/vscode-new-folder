@@ -1,9 +1,6 @@
 const vscode = require('vscode')
 const { u } = require('@igor.dvlpr/upath')
-const {
-  showFolderPicker,
-  ResponseSpeed,
-} = require('@igor.dvlpr/vscode-folderpicker')
+const { showFolderPicker, ResponseSpeed } = require('@igor.dvlpr/vscode-folderpicker')
 const { statSync, mkdirSync } = require('fs')
 
 /**
@@ -15,10 +12,11 @@ const { statSync, mkdirSync } = require('fs')
 /**
  * @typedef IconObject
  * @property {string} iconFolder
- * @property {string}    iconFolderUp
+ * @property {string} iconFolderUp
  * @property {string} iconCreate
  * @property {string} iconNavigate
  * @property {string} iconPick
+ * @property {string} iconClear
  */
 
 /**
@@ -42,6 +40,7 @@ const SupportedIcons = {
     iconCreate: '$(new-folder)',
     iconNavigate: '$(chevron-right)',
     iconPick: '$(check)',
+    iconClear: '$(close)',
   },
   /**
    * @type {IconObject}
@@ -51,7 +50,8 @@ const SupportedIcons = {
     iconFolderUp: '🔼',
     iconCreate: '➕',
     iconNavigate: '▶',
-    iconPick: '🤏',
+    iconPick: '🆗',
+    iconClear: '❌',
   },
 }
 
@@ -60,9 +60,7 @@ const SupportedIcons = {
  * @returns {IconObject}
  */
 function getIcons() {
-  let iconsType = vscode.workspace
-    .getConfiguration('newFolder')
-    .get('iconsType')
+  let iconsType = vscode.workspace.getConfiguration('newFolder').get('iconsType')
 
   if (iconsType && iconsType === IconsType.Emoji) {
     return SupportedIcons.emoji
@@ -76,9 +74,7 @@ function getIcons() {
  * @returns {string} The path of the project root folder or an empty string.
  */
 function getProjectRoot() {
-  const projectRoot = u(
-    vscode.workspace.getConfiguration('newFolder').get('projectRoot') || ''
-  )
+  const projectRoot = u(vscode.workspace.getConfiguration('newFolder').get('projectRoot') || '')
 
   if (!projectRoot) {
     return ''
@@ -108,11 +104,19 @@ function getAutoOpen() {
  * @returns {boolean}
  */
 function getShowIcons() {
-  const showIcons = vscode.workspace
-    .getConfiguration('newFolder')
-    .get('showIcons')
+  const showIcons = vscode.workspace.getConfiguration('newFolder').get('showIcons')
 
   return showIcons == false ? false : true
+}
+
+/**
+ * Gets the IgnoreFocusOut property from Config - configures whether to hide the Picker when losing focus.
+ * @returns {boolean}
+ */
+function getIgnoreFocusOut() {
+  const ignoreFocusOut = vscode.workspace.getConfiguration('newFolder').get('ignoreFocusOut')
+
+  return ignoreFocusOut == false ? false : true
 }
 
 /**
@@ -120,9 +124,7 @@ function getShowIcons() {
  * @returns {number}
  */
 function getResponseSpeed() {
-  const responseSpeed = vscode.workspace
-    .getConfiguration('newFolder')
-    .get('responseSpeed')
+  const responseSpeed = vscode.workspace.getConfiguration('newFolder').get('responseSpeed')
 
   if (responseSpeed === 'Lazy') {
     return ResponseSpeed.Lazy
@@ -140,10 +142,7 @@ function getResponseSpeed() {
  * @returns {void}
  */
 function openConfig() {
-  vscode.commands.executeCommand(
-    'workbench.action.openSettings',
-    '@ext:igordvlpr.new-folder'
-  )
+  vscode.commands.executeCommand('workbench.action.openSettings', '@ext:igordvlpr.new-folder')
 }
 
 /**
@@ -158,13 +157,15 @@ function activate(context) {
 
     showFolderPicker(projectRoot, {
       dialogTitle: 'Folder Picker',
-      ignoreFocusOut: true,
+      ignoreFocusOut: getIgnoreFocusOut(),
       showIcons: getShowIcons(),
+      showConfigButton: true,
       iconFolder: icons.iconFolder,
       iconFolderUp: icons.iconFolderUp,
       iconCreate: icons.iconCreate,
       iconNavigate: icons.iconNavigate,
       iconPick: icons.iconPick,
+      iconClear: icons.iconClear,
       responseSpeed: responseSpeed,
       onConfigButton: openConfig,
       onPickFolder: (folderPath) => {
@@ -172,10 +173,7 @@ function activate(context) {
           if (getAutoOpen()) {
             vscode.window.showInformationMessage(`Opening "${folderPath}"...`)
 
-            vscode.commands.executeCommand(
-              'vscode.openFolder',
-              vscode.Uri.file(folderPath)
-            )
+            vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(folderPath))
           } else {
             vscode.window
               .showInformationMessage(
@@ -199,42 +197,26 @@ function activate(context) {
           })
 
           if (getAutoOpen()) {
-            vscode.window.showInformationMessage(
-              `Successfully created "${folderPath}", now opening...`
-            )
+            vscode.window.showInformationMessage(`Successfully created "${folderPath}", now opening...`)
 
-            vscode.commands.executeCommand(
-              'vscode.openFolder',
-              vscode.Uri.file(folderPath)
-            )
+            vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(folderPath))
           } else {
             vscode.window
-              .showInformationMessage(
-                `Successfully created "${folderPath}".`,
-                ...['Open Folder']
-              )
+              .showInformationMessage(`Successfully created "${folderPath}".`, ...['Open Folder'])
               .then((selection) => {
                 if (selection && selection === 'Open Folder') {
-                  vscode.commands.executeCommand(
-                    'vscode.openFolder',
-                    vscode.Uri.file(folderPath)
-                  )
+                  vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(folderPath))
                 }
               })
           }
         } catch {
-          vscode.window.showErrorMessage(
-            `Couldn't create and open "${folderPath}".`
-          )
+          vscode.window.showErrorMessage(`Couldn't create and open "${folderPath}".`)
         }
       },
     })
   })
 
-  let cmdConfig = vscode.commands.registerCommand(
-    'newFolder.config',
-    openConfig
-  )
+  let cmdConfig = vscode.commands.registerCommand('newFolder.config', openConfig)
 
   context.subscriptions.push(cmdNew)
   context.subscriptions.push(cmdConfig)
