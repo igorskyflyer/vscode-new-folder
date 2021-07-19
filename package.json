@@ -3,14 +3,16 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.1.5",
+	"version": "2.2.0",
 	"engines": {
-		"vscode": "^1.57.0"
+		"vscode": "^1.58.0"
 	},
 	"scripts": {
+		"base": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14",
 		"vscode:prepublish": "npm run make",
-		"make": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14 --minify",
-		"dev": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14 --sourcemap --watch",
+		"make": "npm run -S base -- --minify",
+		"dev": "npm run -S base -- --sourcemap",
+		"wtc": "npm run -S dev -- --watch",
 		"pkg": "vsce package",
 		"pub": "vsce publish"
 	},
@@ -103,6 +105,11 @@
 						"default": "Normal",
 						"markdownDescription": "Response speed for generating Actions when typing into the InputBox of the Picker. **Change only if needed.** Functionality provided by [`Zep()`](https://www.npmjs.com/package/@igor.dvlpr/zep)."
 					},
+					"newFolder.ignoreFocusOut": {
+						"type": "boolean",
+						"default": true,
+						"description": "Whether the Picker should stay open even when loosing focus. This setting is ignored on iPad and is always false."
+					},
 					"newFolder.showIcons": {
 						"type": "boolean",
 						"default": true,
@@ -127,12 +134,12 @@
 	},
 	"devDependencies": {
 		"@types/node": "14.x",
-		"@types/vscode": "^1.57.0",
+		"@types/vscode": "^1.58.0",
 		"esbuild": "^0.12.15"
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.0.2"
+		"@igor.dvlpr/vscode-folderpicker": "^2.1.0"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
