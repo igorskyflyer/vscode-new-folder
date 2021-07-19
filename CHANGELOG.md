@@ -4,8 +4,27 @@
 
 Known issues:
 
-- no folder name validation,
+- no absolute path validation (coming soon),
 - you tell me [here](https://github.com/igorskyflyer/vscode-new-folder/issues).
+
+<br>
+
+### 2.2.0
+
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.0` which brings these fixes/improvements:
+  - relative folder path validation,
+  - added a Clear Action that appears when the relative folder path is not valid,
+  - re-implemented the UI indicator when the Picker is generating Actions that was broken during the previous update,
+- changed the default icon for `Pick current folder` Action (emoji type icons),
+- added a new option, `ignoreFocusOut` that controls whether the Picker should stay open even when loosing focus,
+- updated Visual Studio dependency to `v.1.58.0`,
+- internal improvements.
+
+<br>
+
+### 2.1.5
+
+- updated internal functionality
 
 <br>
 
