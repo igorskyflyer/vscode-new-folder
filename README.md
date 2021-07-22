@@ -38,7 +38,7 @@ Expand the Explorer view in the Sidebar and click on the "Create Folder..." butt
 <br>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/explorer-command.gif" alt="Explorer View">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/explorer-view.gif" alt="Explorer View">
 	<sub>Explorer View command</sub>
 </p>
 
@@ -50,17 +50,65 @@ Hit **F1** to bring up the Command Palette, type "New Folder", select the comman
 
 <br>
 
+#### Actions
+
+<br>
+
+##### 🎯 Create
+
 <p align="center">
-	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-create.gif" alt="Command Palette New Folder">
-	<sub>Command palette command to create a folder in current directory</sub>
+	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-create-relative.gif" alt="Command Palette: New Relative Folder">
+	<sub>Command palette command to create a folder in the current directory</sub>
 </p>
 
 <br>
 <br>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-navigate.gif" alt="Command Palette New Folder">
-	<sub>Command Palette navigate to folder and recursive directories create</sub>
+  <img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-create-absolute.gif" alt="Command Palette: New Absolute Folder">
+    <sub>Command palette command to create a folder with an absolute path</sub>
+</p>
+
+<br>
+<br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-recursive-folder.gif" alt="Command Palette: New Recursive Folder">
+    <sub>Command palette command to create folders recursively in the current folder</sub>
+</p>
+
+<br>
+<br>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-invalid-folder.gif" alt="Command Palette: Invalid Folder">
+    <sub>Invalid folder name supplied</sub>
+</p>
+
+<br>
+<br>
+
+##### 🎯 Navigate
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-navigate-relative.gif" alt="Command Palette: Navigate to Relative Folder">
+	<sub>Navigation to relative-path folders</sub>
+</p>
+
+<br>
+<br>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-navigate-absolute.gif" alt="Command Palette: Navigate to Absolute Folder">
+	<sub>Navigation to absolute-path folders</sub>
+</p>
+
+<br>
+<br>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/npm-vscode-folderpicker/main/screenshots/command-palette-pick-folder.gif" alt="Command Palette: Pick Folder">
+	<sub>Pick a Folder</sub>
 </p>
 
 <br>
@@ -130,6 +178,31 @@ Whether to show icons in the Picker.
 newFolder.iconsType: string = 'built-in'
 ```
 
-The type of icons to use in the Picker.
+The type of icons to use in the Picker, available options are:
+
+- built-in (default) - uses the active Product Icon theme,
+- emoji.
+
+<br>
+
+Icons preview (on Windows)
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/igorskyflyer/vscode-new-folder/main/screenshots/picker-icons.gif" alt="Command Palette Icons Type">
+	<br>
+	<sub>Different types of Icons for the Picker</sub>
+</p>
+
+<br>
+
+Built-in icons are provided by the currently set Product Icon theme, in this case, [Material Product Icons](https://marketplace.visualstudio.com/items?itemName=PKief.material-product-icons).
+
+<br>
+
+```ts
+newFolder.ignoreFocusOut: boolean = true
+```
+
+Controls whether the Picker should stay open even when loosing focus. This setting is ignored on iPad and is always false on other platform defaults to true.
 
 <br>
