@@ -131,7 +131,7 @@
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.1.0"
+		"@igor.dvlpr/vscode-folderpicker": "^2.1.1"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
