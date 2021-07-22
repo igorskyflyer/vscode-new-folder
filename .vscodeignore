@@ -10,3 +10,5 @@ vsc-extension-quickstart.md
 screenshots/
 src/
 node_modules/
+CHANGELOG_ALL.md
+KNOWN_ISSUES.md
