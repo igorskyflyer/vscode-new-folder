@@ -6,6 +6,15 @@ You can read about known issues [here](https://github.com/igorskyflyer/vscode-ne
 
 <br>
 
+### 2.2.1 - 22 July 2021
+
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.1`,
+- updated documentation and demo Gifs,
+- separated changelogs for current and previous versions,
+- moved the known issues from this changelog to a separate file.
+
+<br>
+
 ### 2.2.0
 
 - updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.0` which brings these fixes/improvements:
