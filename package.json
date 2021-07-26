@@ -2,17 +2,16 @@
 	"name": "new-folder",
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
-	"description": "Provides a \"New Folder\" view in the Explorer and a command in the Command Palette.",
-	"version": "2.2.1",
+	"description": "📂 Provides a \"New Folder\" view in the Explorer and a command in the Command Palette. 🤟",
+	"version": "2.2.2",
 	"engines": {
-		"vscode": "^1.58.0"
+		"vscode": "^1.58.1"
 	},
 	"scripts": {
 		"base": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14",
 		"vscode:prepublish": "npm run make",
 		"make": "npm run -S base -- --minify",
-		"dev": "npm run -S base -- --sourcemap",
-		"wtc": "npm run -S dev -- --watch",
+		"dev": "npm run -S base -- --sourcemap --watch",
 		"pkg": "vsce package",
 		"pub": "vsce publish"
 	},
@@ -126,12 +125,12 @@
 	},
 	"devDependencies": {
 		"@types/node": "14.x",
-		"@types/vscode": "^1.58.0",
-		"esbuild": "^0.12.15"
+		"@types/vscode": "^1.58.1",
+		"esbuild": "^0.12.16"
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.1.1"
+		"@igor.dvlpr/vscode-folderpicker": "^2.1.3"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
