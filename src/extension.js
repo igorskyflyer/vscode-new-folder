@@ -151,11 +151,9 @@ function openConfig() {
  */
 function activate(context) {
   let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
-    const projectRoot = getProjectRoot()
     const icons = getIcons()
-    const responseSpeed = getResponseSpeed()
 
-    showFolderPicker(projectRoot, {
+    showFolderPicker(getProjectRoot(), {
       dialogTitle: 'Folder Picker',
       ignoreFocusOut: getIgnoreFocusOut(),
       showIcons: getShowIcons(),
@@ -166,7 +164,7 @@ function activate(context) {
       iconNavigate: icons.iconNavigate,
       iconPick: icons.iconPick,
       iconClear: icons.iconClear,
-      responseSpeed: responseSpeed,
+      responseSpeed: getResponseSpeed(),
       onConfigButton: openConfig,
       onPickFolder: (folderPath) => {
         try {
