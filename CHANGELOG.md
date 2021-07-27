@@ -2,12 +2,12 @@
 
 <br>
 
-### 2.2.3 - 26 July 2021
+### 2.2.4 - 27 July 2021
 
-- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.4` which brings these fixes:
-  - an issue with Picker being busy indefinitely,
-  - caches clear Action,
-  - other performance improvements.
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.2.0` which brings these fixes:
+  - huge performance improvement when fetching directories,
+  - minor UI tweaks,
+  - updated ResponseSpeed.
 
 <br>
 
