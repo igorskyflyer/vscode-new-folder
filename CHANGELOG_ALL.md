@@ -6,6 +6,15 @@ You can read about known issues [here](https://github.com/igorskyflyer/vscode-ne
 
 <br>
 
+### 2.2.3 - 26 July 2021
+
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.4` which brings these fixes:
+  - an issue with Picker being busy indefinitely,
+  - caches clear Action,
+  - other performance improvements.
+
+<br>
+
 ### 2.2.2 - 26 July 2021
 
 - updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.1.3` which brings these fixes:
