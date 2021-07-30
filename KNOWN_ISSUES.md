@@ -2,5 +2,4 @@
 
 ## 🐛 Known issues
 
-- no absolute path validation (coming soon),
-- you tell me [here](https://github.com/igorskyflyer/vscode-new-folder/issues).
+None I am aware of, you tell me [here](https://github.com/igorskyflyer/vscode-new-folder/issues). 😄
