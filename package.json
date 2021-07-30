@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "📂 Provides a \"New Folder\" view in the Explorer and a command in the Command Palette. 🤟",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"engines": {
 		"vscode": "^1.58.1"
 	},
