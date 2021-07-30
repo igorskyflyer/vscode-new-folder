@@ -3,7 +3,7 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "📂 Provides a \"New Folder\" view in the Explorer and a command in the Command Palette. 🤟",
-	"version": "2.2.4",
+	"version": "2.3.0",
 	"engines": {
 		"vscode": "^1.58.1"
 	},
@@ -126,11 +126,11 @@
 	"devDependencies": {
 		"@types/node": "14.x",
 		"@types/vscode": "^1.58.1",
-		"esbuild": "^0.12.16"
+		"esbuild": "^0.12.17"
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.2.0"
+		"@igor.dvlpr/vscode-folderpicker": "^2.3.1"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
