@@ -7,6 +7,7 @@
 </p>
 
 <p align="center">
+  <img src="https://vsmarketplacebadge.apphb.com/downloads-short/igordvlpr.new-folder.svg?style=flat&color=2d97e3" alt="Downloads">
   <img src="https://vsmarketplacebadge.apphb.com/installs/igordvlpr.new-folder.svg?style=flat&color=2d97e3" alt="Installs">
   <img src="https://vsmarketplacebadge.apphb.com/rating/igordvlpr.new-folder.svg?style=flat&color=2d97e3" alt="Rating">
 </p>
