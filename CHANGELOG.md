@@ -2,9 +2,10 @@
 
 <br>
 
-### 2.3.2 - 30 July 2021
+### 2.4.0 - 24 July 2022
 
-- minor stability fixes.
+- added a new feature, the ability to create new folders inside a workspace, thanks [Waleed Dahshan](https://github.com/wmstack) for the feature request [#31](https://github.com/igorskyflyer/vscode-new-folder/issues/31),
+- updated [FolderPicker](https://www.npmjs.com/package/@igor.dvlpr/vscode-folderpicker) to `v.2.4.0 which brings some minor stability fixes as well.
 
 <br>
 
