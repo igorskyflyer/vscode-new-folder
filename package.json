@@ -3,9 +3,9 @@
 	"displayName": "New Folder",
 	"publisher": "igordvlpr",
 	"description": "📂 Provides a \"New Folder\" view in the Explorer and a command in the Command Palette. 🤟",
-	"version": "2.3.2",
+	"version": "2.4.0",
 	"engines": {
-		"vscode": "^1.58.1"
+		"vscode": "^1.69.0"
 	},
 	"scripts": {
 		"base": "esbuild src/extension.js --bundle --outfile=dist/new-folder.js --platform=node --external:vscode --target=node14",
@@ -32,10 +32,16 @@
 	"extensionKind": [
 		"ui"
 	],
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
 	"activationEvents": [
 		"onStartupFinished",
 		"onCommand:newFolder.new",
-		"onCommand:newFolder.config"
+		"onCommand:newFolder.config",
+		"onCommand:newFolder.inProject"
 	],
 	"main": "./dist/new-folder.js",
 	"contributes": {
@@ -49,6 +55,11 @@
 				"command": "newFolder.config",
 				"title": "Config",
 				"category": "New Folder"
+			},
+			{
+				"command": "newFolder.newInProject",
+				"title": "Create in Project...",
+				"category": "New Folder"
 			}
 		],
 		"keybindings": [
@@ -56,6 +67,11 @@
 				"command": "newFolder.new",
 				"key": "Ctrl+Alt+N",
 				"mac": "Cmd+Alt+N"
+			},
+			{
+				"command": "newFolder.newInProject",
+				"key": "Ctrl+Alt+P",
+				"mac": "Cmd+Alt+P"
 			}
 		],
 		"viewsWelcome": [
@@ -125,12 +141,12 @@
 	},
 	"devDependencies": {
 		"@types/node": "14.x",
-		"@types/vscode": "^1.58.1",
-		"esbuild": "^0.12.17"
+		"@types/vscode": "^1.69.0",
+		"esbuild": "^0.14.49"
 	},
 	"dependencies": {
 		"@igor.dvlpr/upath": "^1.2.1",
-		"@igor.dvlpr/vscode-folderpicker": "^2.3.2"
+		"@igor.dvlpr/vscode-folderpicker": "^2.4.0"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
