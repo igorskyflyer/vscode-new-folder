@@ -6,6 +6,12 @@ You can read about known issues [here](https://github.com/igorskyflyer/vscode-ne
 
 <br>
 
+### 2.3.2 - 30 July 2021
+
+- minor stability fixes.
+
+<br>
+
 ### 2.3.1 - 30 July 2021
 
 - fixed an issue that causes the Actions generating to hang,
