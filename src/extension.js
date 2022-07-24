@@ -150,11 +150,11 @@ function openConfig() {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
-    const icons = getIcons()
+  const icons = getIcons()
 
+  let cmdNew = vscode.commands.registerCommand('newFolder.new', () => {
     showFolderPicker(getProjectRoot(), {
-      dialogTitle: 'Folder Picker',
+      dialogTitle: 'New Folder',
       ignoreFocusOut: getIgnoreFocusOut(),
       showIcons: getShowIcons(),
       showConfigButton: true,
@@ -214,10 +214,47 @@ function activate(context) {
     })
   })
 
+  let cmdInProject = vscode.commands.registerCommand('newFolder.newInProject', () => {
+    if (!vscode.workspace.workspaceFolders || !vscode.workspace.workspaceFolders.length) {
+      vscode.window.showErrorMessage('No folder opened. Please open a folder/workspace first.')
+      return
+    }
+
+    const directory = vscode.workspace.workspaceFolders[0].uri.fsPath
+
+    showFolderPicker(directory, {
+      dialogTitle: 'New Folder',
+      canPick: false,
+      ignoreFocusOut: getIgnoreFocusOut(),
+      showIcons: getShowIcons(),
+      showConfigButton: true,
+      iconFolder: icons.iconFolder,
+      iconFolderUp: icons.iconFolderUp,
+      iconCreate: icons.iconCreate,
+      iconNavigate: icons.iconNavigate,
+      iconPick: icons.iconPick,
+      iconClear: icons.iconClear,
+      responseSpeed: getResponseSpeed(),
+      onConfigButton: openConfig,
+      onCreateFolder: (folderPath) => {
+        try {
+          mkdirSync(folderPath, {
+            recursive: true,
+          })
+
+          vscode.window.showInformationMessage(`Successfully created "${folderPath}".`)
+        } catch {
+          vscode.window.showErrorMessage(`Couldn't create and open "${folderPath}".`)
+        }
+      },
+    })
+  })
+
   let cmdConfig = vscode.commands.registerCommand('newFolder.config', openConfig)
 
   context.subscriptions.push(cmdNew)
   context.subscriptions.push(cmdConfig)
+  context.subscriptions.push(cmdInProject)
 }
 
 function deactivate() {
